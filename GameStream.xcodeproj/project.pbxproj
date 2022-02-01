@@ -14,6 +14,7 @@
 		923D73E127A5B7FB00BC23BA /* GameStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73E027A5B7FB00BC23BA /* GameStreamTests.swift */; };
 		923D73EB27A5B7FB00BC23BA /* GameStreamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73EA27A5B7FB00BC23BA /* GameStreamUITests.swift */; };
 		923D73ED27A5B7FB00BC23BA /* GameStreamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73EC27A5B7FB00BC23BA /* GameStreamUITestsLaunchTests.swift */; };
+		92B4779027A8E620008949BE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4778F27A8E620008949BE /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		923D73E627A5B7FB00BC23BA /* GameStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		923D73EA27A5B7FB00BC23BA /* GameStreamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamUITests.swift; sourceTree = "<group>"; };
 		923D73EC27A5B7FB00BC23BA /* GameStreamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		92B4778F27A8E620008949BE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				923D73D127A5B7F700BC23BA /* ContentView.swift */,
 				923D73D327A5B7FB00BC23BA /* Assets.xcassets */,
 				923D73D527A5B7FB00BC23BA /* Preview Content */,
+				92B4778F27A8E620008949BE /* Home.swift */,
 			);
 			path = GameStream;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				923D73D227A5B7F700BC23BA /* ContentView.swift in Sources */,
+				92B4779027A8E620008949BE /* Home.swift in Sources */,
 				923D73D027A5B7F700BC23BA /* GameStreamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
