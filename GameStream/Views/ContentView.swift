@@ -12,12 +12,12 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 
-                Spacer()
-                
                 Color("Marine")
                     .ignoresSafeArea()
                 
                 VStack {
+                    
+                    Spacer()
                     
                     Image("appLogo")
                         .resizable()

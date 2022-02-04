@@ -25,8 +25,7 @@ struct Home: View {
                 Text("Profile")
             }.tag(0)
             
-            Text("Games")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            GamesView()
                 .tabItem {
                     Image(systemName: "gamecontroller")
                     Text("Games")
@@ -46,6 +45,7 @@ struct Home: View {
                 }.tag(3)
             
         }.accentColor(.white)
+        
         
     }
     
@@ -103,12 +103,14 @@ struct HomeView: View {
                 
                 SubModuleHome()
                 
+                Spacer()
             }
             .padding(.horizontal, 18)
             
         }
-        .navigationBarHidden(true)
+        .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
         
     }
     
@@ -152,7 +154,7 @@ struct SubModuleHome: View {
                             Text("The Witcher 3")
                                 .frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
                                 .background(Color("Blue-Gray"))
-                                
+                            
                         }
                         
                     })
@@ -275,7 +277,7 @@ struct SubModuleHome: View {
                     }
                     
                 }
-             
+                
                 Text("YOU MIGHT LIKE")
                     .font(.title3)
                     .bold()
