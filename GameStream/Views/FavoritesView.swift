@@ -44,8 +44,6 @@ struct FavoritesView: View {
                                 
                         }.padding(.bottom, 9)
                         
-                        
-                        
                     }
                     
                     
@@ -54,8 +52,10 @@ struct FavoritesView: View {
                 
             }.padding(.horizontal, 6)
             
-        }.navigationBarHidden(true)
+        }
+        .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
         
     }
 }

@@ -14,29 +14,32 @@ struct Home: View {
     
     var body: some View {
         
-        NavigationView {
+
             TabView(selection: $selectedTab) {
                 
-                ProfileView()
-                    .tabItem {
+                NavigationView {
+                    ProfileView()
+                }.tabItem {
                         Image(systemName: "person")
                         Text("Profile")
                     }.tag(0)
                 
+                NavigationView {
                 GamesView()
-                    .tabItem {
+                }.tabItem {
                         Image(systemName: "gamecontroller")
                         Text("Games")
                     }.tag(1)
-                
-                HomeView()
-                    .tabItem {
+                NavigationView {
+                    HomeView()
+                }.tabItem {
                         Image(systemName: "house")
                         Text("Home")
                     }.tag(2)
                 
-                FavoritesView()
-                    .tabItem {
+                NavigationView {
+                    FavoritesView()
+                }.tabItem {
                         Image(systemName: "heart")
                         Text("Favorites")
                     }.tag(3)
@@ -45,9 +48,7 @@ struct Home: View {
             .accentColor(.white)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-        }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+
         
     }
     
