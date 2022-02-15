@@ -29,14 +29,16 @@ struct ContentView: View {
                     
                 }
                 
-            }.navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
 
 struct SignInAndRegisterView: View {
     
-    @State var isSignInView: Bool = true
+    @State var isSignInView: Bool = false
     
     var body: some View {
         
@@ -201,7 +203,7 @@ struct SignInView: View {
             }
             .padding(.horizontal, 77.0)
             
-            NavigationLink(destination: Home(),
+            NavigationLink(destination: Home().navigationBarHidden(true).navigationBarBackButtonHidden(true),
                            isActive: $isHomeViewActive,
                            label: {EmptyView()})
             

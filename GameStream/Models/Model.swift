@@ -32,3 +32,9 @@ struct VideoUrl: Codable, Hashable {
     let mobile: String
     let tablet: String
 }
+
+struct Results: Codable {
+    
+    let results: [Game]
+    
+}

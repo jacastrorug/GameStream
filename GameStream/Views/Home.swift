@@ -16,14 +16,11 @@ struct Home: View {
         
         TabView(selection: $selectedTab) {
             
-            VStack {
-                Text("Profile")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                Image(systemName: "person")
-            }.tabItem {
-                Image(systemName: "person")
-                Text("Profile")
-            }.tag(0)
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Profile")
+                }.tag(0)
             
             GamesView()
                 .tabItem {
@@ -37,14 +34,16 @@ struct Home: View {
                     Text("Home")
                 }.tag(2)
             
-            Text("Favorites")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            FavoritesView()
                 .tabItem {
                     Image(systemName: "heart")
                     Text("Favorites")
                 }.tag(3)
             
-        }.accentColor(.white)
+        }
+        .accentColor(.white)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         
         
     }
@@ -62,8 +61,6 @@ struct Home: View {
 
 struct HomeView: View {
     
-    @State var searchValue: String = ""
-    
     var body: some View {
         
         ZStack {
@@ -78,12 +75,52 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250)
                 
+                SubModuleHome()
+                
+                Spacer()
+            }
+            .padding(.horizontal, 18)
+            
+        }
+        .navigationBarTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        
+    }
+    
+}
+
+struct SubModuleHome: View {
+    
+    @State var searchValue: String = ""
+    @State var isGameInfoEmpty: Bool = false
+    
+    @ObservedObject var searchGame = SearchGame()
+    @State var isGameViewActive: Bool = false
+    
+    @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
+    @State var isPlayerActive = false
+    
+    @State var gameSearched: Game!
+    
+    let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
+    
+    
+    var body: some View {
+        
+        ScrollView {
+            
+            VStack {
+                
                 HStack {
                     
-                    Button(action: search, label: {
+                    Button(action: { watchGame(name: self.searchValue) },
+                           label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(searchValue.isEmpty ? .yellow : Color("Dark-Cian"))
-                    })
+                    }).alert(isPresented: $isGameInfoEmpty) {
+                        Alert(title: Text("Error"), message: Text("Game not found."), dismissButton: .default(Text("Ok")))
+                    }
                     
                     ZStack(alignment: .leading) {
                         if searchValue.isEmpty {
@@ -101,39 +138,6 @@ struct HomeView: View {
                 .background(Color("Blue-Gray"))
                 .clipShape(Capsule())
                 
-                SubModuleHome()
-                
-                Spacer()
-            }
-            .padding(.horizontal, 18)
-            
-        }
-        .navigationBarTitle("")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-        
-    }
-    
-    func search() {
-        print("The user is searching for: \(self.searchValue)")
-    }
-    
-}
-
-struct SubModuleHome: View {
-    
-    @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
-    
-    @State var isPlayerActive = false
-    
-    let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
-    
-    
-    var body: some View {
-        
-        ScrollView {
-            VStack {
-                
                 Text("MOST POPULAR")
                     .font(.title3)
                     .bold()
@@ -143,7 +147,7 @@ struct SubModuleHome: View {
                 
                 ZStack {
                     
-                    Button(action: {self.playVideo(index: 0)}, label: {
+                    Button(action: {self.watchGame(name: "The Witcher 3")}, label: {
                         
                         VStack(spacing: 0) {
                             
@@ -246,7 +250,7 @@ struct SubModuleHome: View {
                     
                     HStack {
                         
-                        Button(action: {self.playVideo(index: 1)},
+                        Button(action: {self.watchGame(name: "Crash Bandicoot")},
                                label: {
                             
                             Image("Spiderman")
@@ -255,7 +259,7 @@ struct SubModuleHome: View {
                             
                         })
                         
-                        Button(action: {self.playVideo(index: 2)},
+                        Button(action: {self.watchGame(name: "Crash Bandicoot")},
                                label: {
                             
                             Image("BattleField6")
@@ -264,7 +268,7 @@ struct SubModuleHome: View {
                             
                         })
                         
-                        Button(action: {self.playVideo(index: 3)},
+                        Button(action: {self.watchGame(name: "Uncharted 4")},
                                label: {
                             
                             Image("Uncharted4")
@@ -289,7 +293,7 @@ struct SubModuleHome: View {
                     
                     HStack {
                         
-                        Button(action: {self.playVideo(index: 5)},
+                        Button(action: {self.watchGame(name: "Crash Bandicoot")},
                                label: {
                             
                             Image("TheLastOfUs")
@@ -298,7 +302,7 @@ struct SubModuleHome: View {
                             
                         })
                         
-                        Button(action: {self.playVideo(index: 6)},
+                        Button(action: {self.watchGame(name: "The Witcher 3")},
                                label: {
                             
                             Image("Uncharted4")
@@ -315,12 +319,11 @@ struct SubModuleHome: View {
             }
         }
         
-        
-        NavigationLink(destination: VideoPlayer(player: AVPlayer(url: URL(string: self.url)!))
-                        .frame(width: 400, height: 300),
-                       isActive: $isPlayerActive,
-                       label: {EmptyView()})
-        
+        if let game = gameSearched {
+            NavigationLink(destination: GameView(game: game),
+                           isActive: $isGameViewActive,
+                           label: {EmptyView()})
+        }
         
     }
     
@@ -328,6 +331,27 @@ struct SubModuleHome: View {
         self.url = self.urlVideos[index]
         print("URL: \(self.url)")
         self.isPlayerActive = true
+    }
+    
+    func watchGame(name: String) {
+        
+        searchGame.search(gameName: name)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            
+            print("Number of elements: \(searchGame.gamesInfo.count)")
+            
+            if searchGame.gamesInfo.count > 0 {
+                self.gameSearched = searchGame.gamesInfo[0]
+                
+                isGameViewActive = true
+                
+            } else {
+                self.isGameInfoEmpty = true
+            }
+            
+        }
+        
     }
     
 }

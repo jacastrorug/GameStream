@@ -13,14 +13,7 @@ struct GamesView: View {
     @ObservedObject var videoGamesList = ViewModel()
     
     @State var gameViewIsActive: Bool = false
-    @State var url: String = ""
-    @State var title: String = ""
-    @State var studio: String = ""
-    @State var contentRating: String = ""
-    @State var publicationYear: String = ""
-    @State var description: String = ""
-    @State var tags: [String] = [""]
-    @State var imgsUrl: [String] = [""]
+    @State var game: Game!
     
     let gridShape = [
         GridItem(.flexible()),
@@ -97,27 +90,28 @@ struct GamesView: View {
                 
             }.padding(.horizontal, 6)
             
+            
+            if let game = self.game {
+                NavigationLink(isActive: self.$gameViewIsActive,
+                               destination: {GameView(game: game)},
+                               label: { EmptyView() })
+            }
+            
         }
         .navigationBarHidden(true)
     }
     
     func selectGame(game: Game) {
-        self.url = game.videosUrls.mobile
-        self.title = game.title
-        self.studio = game.studio
-        self.contentRating = game.contentRaiting
-        self.publicationYear = game.publicationYear
-        self.description = game.description
-        self.tags = game.tags
-        self.imgsUrl = game.galleryImages
+        self.game = game
+        print("Game selected: \(self.game.title)")
         
-        print("Game selected: \(self.title)")
-        
+        self.gameViewIsActive = true
     }
     
 }
 
 struct GamesView_Previews: PreviewProvider {
+    
     static var previews: some View {
         GamesView()
     }
