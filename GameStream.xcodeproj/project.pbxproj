@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		921D244B27BC2EC70007B74D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D244A27BC2EC70007B74D /* ProfileView.swift */; };
 		921D244D27BC36210007B74D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D244C27BC36210007B74D /* EditProfileView.swift */; };
+		921D244F27BC45C40007B74D /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D244E27BC45C40007B74D /* SaveData.swift */; };
+		921D245127BC54A50007B74D /* SUImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D245027BC54A50007B74D /* SUImagePickerView.swift */; };
 		923D73D027A5B7F700BC23BA /* GameStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73CF27A5B7F700BC23BA /* GameStreamApp.swift */; };
 		923D73D227A5B7F700BC23BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73D127A5B7F700BC23BA /* ContentView.swift */; };
 		923D73D427A5B7FB00BC23BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 923D73D327A5B7FB00BC23BA /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		921D244A27BC2EC70007B74D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		921D244C27BC36210007B74D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		921D244E27BC45C40007B74D /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
+		921D245027BC54A50007B74D /* SUImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUImagePickerView.swift; sourceTree = "<group>"; };
 		923D73CC27A5B7F700BC23BA /* GameStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		923D73CF27A5B7F700BC23BA /* GameStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamApp.swift; sourceTree = "<group>"; };
 		923D73D127A5B7F700BC23BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,8 +181,10 @@
 		925E0B4427AA3EB200483CC7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				921D245027BC54A50007B74D /* SUImagePickerView.swift */,
 				925E0B4727AA3EF800483CC7 /* ViewModel.swift */,
 				92F0980927BC0BCA00CFDEB6 /* SearchGame.swift */,
+				921D244E27BC45C40007B74D /* SaveData.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 			files = (
 				92F0980C27BC167700CFDEB6 /* FavoritesView.swift in Sources */,
 				92F0980827BB65D300CFDEB6 /* ImageView.swift in Sources */,
+				921D244F27BC45C40007B74D /* SaveData.swift in Sources */,
 				92F0980A27BC0BCA00CFDEB6 /* SearchGame.swift in Sources */,
 				92F0980527BB3FB600CFDEB6 /* GameView.swift in Sources */,
 				9243C86F27AC114E00E2620B /* GamesView.swift in Sources */,
@@ -336,6 +343,7 @@
 				921D244D27BC36210007B74D /* EditProfileView.swift in Sources */,
 				923D73D227A5B7F700BC23BA /* ContentView.swift in Sources */,
 				92B4779027A8E620008949BE /* Home.swift in Sources */,
+				921D245127BC54A50007B74D /* SUImagePickerView.swift in Sources */,
 				925E0B4827AA3EF800483CC7 /* ViewModel.swift in Sources */,
 				921D244B27BC2EC70007B74D /* ProfileView.swift in Sources */,
 				923D73D027A5B7F700BC23BA /* GameStreamApp.swift in Sources */,
@@ -501,6 +509,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GameStream/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used to take profile photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -529,6 +538,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GameStream/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used to take profile photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

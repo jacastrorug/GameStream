@@ -11,6 +11,8 @@ struct ProfileView: View {
     
     @State var userName: String = "Lorem"
     
+    @State var profileImage: UIImage = UIImage(named: "imageComments")!
+    
     var body: some View {
         
         ZStack {
@@ -28,29 +30,69 @@ struct ProfileView: View {
                 
                 VStack {
                     
-                    Image("imageComments")
+                    Image(uiImage: profileImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 80, height: 80)
                         .cornerRadius(40)
                     
+                    Text("\(self.userName)")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                    
                 }.padding(EdgeInsets(top: 16, leading: 0, bottom: 32, trailing: 0))
                 
                 SettingsModule()
+                
+                Spacer()
                 
                 
             }
             
             
             
-        }.onAppear(perform: {
+            
+        }
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
             
             print("Searching for user info in my user defaults")
             
-        }).navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+            
+            if let UiImage = getUiImage(named: "profile_foto.png") {
+                self.profileImage = UiImage
+            } else{
+                print("Profile image not found in device")
+            }
+            
+            
+            let saveData = SaveData()
+            let result = saveData.getUserInformation()
+            
+            if result.count > 0 {
+                self.userName = result[2]
+            }
+            
+        })
         
     }
+
+    func getUiImage(named: String) -> UIImage? {
+        
+        if let dir = try? FileManager.default.url(for: .documentDirectory,
+                                                in: .userDomainMask,
+                                                appropriateFor: nil,
+                                                     create: false) {
+            
+            let url = URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path
+            return UIImage(contentsOfFile: url)
+            
+        }
+        
+        return nil
+    }
+    
 }
 
 struct SettingsModule: View {
@@ -68,11 +110,11 @@ struct SettingsModule: View {
                 .padding(.leading, 18)
             
             VStack(spacing: 3) {
-             
+                
                 Button(action: {}, label: {
                     
                     HStack {
-                     
+                        
                         Text("Account")
                             .foregroundColor(.white)
                         
@@ -82,16 +124,16 @@ struct SettingsModule: View {
                             .foregroundColor(.white)
                         
                     }.padding()
-                    .background(Color("Blue-Gray"))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(.horizontal, 8)
-                        
+                        .background(Color("Blue-Gray"))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(.horizontal, 8)
+                    
                 })
                 
                 Button(action: {}, label: {
                     
                     HStack {
-                     
+                        
                         Text("Notifications")
                             .foregroundColor(.white)
                         
@@ -100,16 +142,16 @@ struct SettingsModule: View {
                         Toggle("", isOn: $isToggleOn)
                         
                     }.padding()
-                    .background(Color("Blue-Gray"))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(.horizontal, 8)
-                        
+                        .background(Color("Blue-Gray"))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(.horizontal, 8)
+                    
                 })
                 
                 Button(action: { self.isEditProfileViewActive = true }, label: {
                     
                     HStack {
-                     
+                        
                         Text("Edit Profile")
                             .foregroundColor(.white)
                         
@@ -119,16 +161,16 @@ struct SettingsModule: View {
                             .foregroundColor(.white)
                         
                     }.padding()
-                    .background(Color("Blue-Gray"))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(.horizontal, 8)
-                        
+                        .background(Color("Blue-Gray"))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(.horizontal, 8)
+                    
                 })
                 
                 Button(action: {}, label: {
                     
                     HStack {
-                     
+                        
                         Text("Rate app")
                             .foregroundColor(.white)
                         
@@ -141,10 +183,10 @@ struct SettingsModule: View {
                             .foregroundColor(.white)
                         
                     }.padding()
-                    .background(Color("Blue-Gray"))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .padding(.horizontal, 8)
-                        
+                        .background(Color("Blue-Gray"))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(.horizontal, 8)
+                    
                 })
                 
             }

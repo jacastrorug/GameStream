@@ -8,37 +8,54 @@
 import SwiftUI
 
 struct ContentView: View {
+    let isUserAuth: Bool
+    
     var body: some View {
-        NavigationView {
-            ZStack {
-                
-                Color("Marine")
-                    .ignoresSafeArea()
-                
-                VStack {
+        
+        if !isUserAuth {
+            NavigationView {
+                ZStack {
                     
-                    Spacer()
+                    Color("Marine")
+                        .ignoresSafeArea()
                     
-                    Image("appLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 250)
-                        .padding(.bottom, 40)
-                    
-                    SignInAndRegisterView()
+                    VStack {
+                        
+                        Spacer()
+                        
+                        Image("appLogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 250)
+                            .padding(.bottom, 40)
+                        
+                        SignInAndRegisterView()
+                        
+                    }
                     
                 }
-                
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+        } else {
+            Home()
         }
+        
     }
+    
+    init() {
+        let saveData = SaveData()
+        
+        let userData = saveData.getUserInformation()
+        self.isUserAuth = userData.count > 0
+    }
+    
 }
 
 struct SignInAndRegisterView: View {
-    
-    @State var isSignInView: Bool = false
+    @State var isSignInView: Bool = true
     
     var body: some View {
         
@@ -89,6 +106,7 @@ struct SignInView: View {
     @State var password: String = ""
     
     @State var isHomeViewActive: Bool = false
+    @State var isUserNotFounded: Bool = false
     
     var body: some View {
         ScrollView {
@@ -156,7 +174,16 @@ struct SignInView: View {
                                 .shadow(color: .white, radius: 6)
                             
                         )
-                }).padding(.bottom, 60)
+                })
+                .padding(.bottom, 60)
+                .alert(isPresented: $isUserNotFounded, content: {
+                    
+                    Alert(title: Text("Error"),
+                          message: Text("The email or password are wrong."),
+                          dismissButton: .default(Text("Ok")))
+                    
+                })
+                    
                 
                 
                 
@@ -212,7 +239,18 @@ struct SignInView: View {
     
     func signIn() {
         print("I'm sign in...")
-        self.isHomeViewActive = true
+        
+        let saveData = SaveData()
+        
+        let result = saveData.validate(email: self.email, password: self.password)
+        
+        if result {
+            self.isUserNotFounded = false
+            self.isHomeViewActive = true
+        } else {
+            self.isUserNotFounded = true
+        }
+        
     }
     
 }
@@ -222,6 +260,9 @@ struct RegisterView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var confirmPasswod: String = ""
+    
+    @State var isHomeViewActive: Bool = false
+    @State var formHaveErrors: Bool = false
     
     var body: some View {
         ScrollView {
@@ -346,7 +387,11 @@ struct RegisterView: View {
                                 .shadow(color: .white, radius: 6)
                             
                         )
-                }).padding(.bottom, 30)
+                })
+                .padding(.bottom, 30)
+                .alert(isPresented: $formHaveErrors, content: {
+                    Alert(title: Text("Error"), message: Text("Please confirm the register form."), dismissButton: .default(Text("Ok")))
+                })
                 
                 
                 
@@ -391,12 +436,46 @@ struct RegisterView: View {
             }
             .padding(.horizontal, 77.0)
             
+            NavigationLink(destination: Home(),
+                           isActive: $isHomeViewActive,
+                           label: {EmptyView()})
             
         }
     }
     
     func register() {
+        if !formValid() {
+            self.formHaveErrors = true
+            return
+        }
         
+        print("form: \(!formValid())")
+        
+        let saveData = SaveData()
+        let result = saveData.saveUserInformation(email: self.email, password: self.password, userName: "jacastrorug")
+        
+        if result {
+            self.isHomeViewActive = true
+        }
+        
+    }
+    
+    func formValid() -> Bool {
+        
+        if self.email.isEmpty {
+            return false
+        }
+        
+        if self.password.isEmpty {
+            return false
+        }
+        
+        if self.confirmPasswod.isEmpty || self.password != self.confirmPasswod {
+            
+            return false
+        }
+        
+        return true
     }
     
     func takePhoto() {

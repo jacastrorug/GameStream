@@ -14,37 +14,40 @@ struct Home: View {
     
     var body: some View {
         
-        TabView(selection: $selectedTab) {
-            
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Profile")
-                }.tag(0)
-            
-            GamesView()
-                .tabItem {
-                    Image(systemName: "gamecontroller")
-                    Text("Games")
-                }.tag(1)
-            
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
-                }.tag(2)
-            
-            FavoritesView()
-                .tabItem {
-                    Image(systemName: "heart")
-                    Text("Favorites")
-                }.tag(3)
-            
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Profile")
+                    }.tag(0)
+                
+                GamesView()
+                    .tabItem {
+                        Image(systemName: "gamecontroller")
+                        Text("Games")
+                    }.tag(1)
+                
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Home")
+                    }.tag(2)
+                
+                FavoritesView()
+                    .tabItem {
+                        Image(systemName: "heart")
+                        Text("Favorites")
+                    }.tag(3)
+                
+            }
+            .accentColor(.white)
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
-        .accentColor(.white)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        
         
     }
     
