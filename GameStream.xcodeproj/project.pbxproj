@@ -11,6 +11,9 @@
 		921D244D27BC36210007B74D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D244C27BC36210007B74D /* EditProfileView.swift */; };
 		921D244F27BC45C40007B74D /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D244E27BC45C40007B74D /* SaveData.swift */; };
 		921D245127BC54A50007B74D /* SUImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D245027BC54A50007B74D /* SUImagePickerView.swift */; };
+		922D88F727BF3FC700F2AA56 /* PointSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D88F627BF3FC700F2AA56 /* PointSystem.swift */; };
+		922D88F927BF41B400F2AA56 /* Assets2x3x.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D88F827BF41B400F2AA56 /* Assets2x3x.swift */; };
+		922D88FB27BF43B100F2AA56 /* OffsetPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D88FA27BF43B100F2AA56 /* OffsetPosition.swift */; };
 		923D73D027A5B7F700BC23BA /* GameStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73CF27A5B7F700BC23BA /* GameStreamApp.swift */; };
 		923D73D227A5B7F700BC23BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D73D127A5B7F700BC23BA /* ContentView.swift */; };
 		923D73D427A5B7FB00BC23BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 923D73D327A5B7FB00BC23BA /* Assets.xcassets */; };
@@ -51,6 +54,9 @@
 		921D244C27BC36210007B74D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		921D244E27BC45C40007B74D /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
 		921D245027BC54A50007B74D /* SUImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUImagePickerView.swift; sourceTree = "<group>"; };
+		922D88F627BF3FC700F2AA56 /* PointSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointSystem.swift; sourceTree = "<group>"; };
+		922D88F827BF41B400F2AA56 /* Assets2x3x.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets2x3x.swift; sourceTree = "<group>"; };
+		922D88FA27BF43B100F2AA56 /* OffsetPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPosition.swift; sourceTree = "<group>"; };
 		923D73CC27A5B7F700BC23BA /* GameStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		923D73CF27A5B7F700BC23BA /* GameStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamApp.swift; sourceTree = "<group>"; };
 		923D73D127A5B7F700BC23BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,6 +172,9 @@
 				92F0980B27BC167700CFDEB6 /* FavoritesView.swift */,
 				921D244A27BC2EC70007B74D /* ProfileView.swift */,
 				921D244C27BC36210007B74D /* EditProfileView.swift */,
+				922D88F627BF3FC700F2AA56 /* PointSystem.swift */,
+				922D88F827BF41B400F2AA56 /* Assets2x3x.swift */,
+				922D88FA27BF43B100F2AA56 /* OffsetPosition.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,14 +345,17 @@
 				92F0980C27BC167700CFDEB6 /* FavoritesView.swift in Sources */,
 				92F0980827BB65D300CFDEB6 /* ImageView.swift in Sources */,
 				921D244F27BC45C40007B74D /* SaveData.swift in Sources */,
+				922D88F927BF41B400F2AA56 /* Assets2x3x.swift in Sources */,
 				92F0980A27BC0BCA00CFDEB6 /* SearchGame.swift in Sources */,
 				92F0980527BB3FB600CFDEB6 /* GameView.swift in Sources */,
 				9243C86F27AC114E00E2620B /* GamesView.swift in Sources */,
+				922D88FB27BF43B100F2AA56 /* OffsetPosition.swift in Sources */,
 				925E0B4627AA3EE900483CC7 /* Model.swift in Sources */,
 				921D244D27BC36210007B74D /* EditProfileView.swift in Sources */,
 				923D73D227A5B7F700BC23BA /* ContentView.swift in Sources */,
 				92B4779027A8E620008949BE /* Home.swift in Sources */,
 				921D245127BC54A50007B74D /* SUImagePickerView.swift in Sources */,
+				922D88F727BF3FC700F2AA56 /* PointSystem.swift in Sources */,
 				925E0B4827AA3EF800483CC7 /* ViewModel.swift in Sources */,
 				921D244B27BC2EC70007B74D /* ProfileView.swift in Sources */,
 				923D73D027A5B7F700BC23BA /* GameStreamApp.swift in Sources */,

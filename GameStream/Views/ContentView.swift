@@ -39,6 +39,7 @@ struct ContentView: View {
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .navigationViewStyle(StackNavigationViewStyle())
         } else {
             Home()
         }
@@ -323,7 +324,7 @@ struct RegisterView: View {
                         .background(Color("Dark-Cian"))
                         .padding(.bottom)
                     
-                }.frame(width: 300)
+                }
                 
                 VStack(alignment: .leading) {
                     Text("Password")

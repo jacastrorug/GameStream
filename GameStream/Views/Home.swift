@@ -48,6 +48,7 @@ struct Home: View {
             .accentColor(.white)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .navigationViewStyle(StackNavigationViewStyle())
 
         
     }
@@ -106,6 +107,8 @@ struct SubModuleHome: View {
     @State var isPlayerActive = false
     
     @State var gameSearched: Game!
+    
+    var currentDevice = UIDevice.current.model
     
     let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
     
@@ -185,61 +188,121 @@ struct SubModuleHome: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     
-                    HStack {
-                        
-                        Button(action: {}, label: {
+                    if currentDevice == "iPad" {
+                        HStack {
                             
-                            ZStack {
+                            Button(action: {}, label: {
                                 
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color("Blue-Gray"))
-                                    .frame(width: 160, height: 90)
+                                ZStack {
+                                    
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color("Blue-Gray"))
+                                        .frame(width: 320, height: 180)
+                                    
+                                    Image("FPS")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 84, height: 84)
+                                    
+                                }
                                 
-                                Image("FPS")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 42, height: 42)
-                                
-                            }
+                            })
                             
-                        })
-                        
-                        Button(action: {}, label: {
+                            Button(action: {}, label: {
+                                
+                                ZStack {
+                                    
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color("Blue-Gray"))
+                                        .frame(width: 320, height: 180)
+                                    
+                                    Image("RPG")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 84, height: 84)
+                                    
+                                }
+                                
+                            })
                             
-                            ZStack {
+                            Button(action: {}, label: {
                                 
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color("Blue-Gray"))
-                                    .frame(width: 160, height: 90)
+                                ZStack {
+                                    
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color("Blue-Gray"))
+                                        .frame(width: 320, height: 180)
+                                    
+                                    Image("OpenWorld")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 84, height: 84)
+                                    
+                                }
                                 
-                                Image("RPG")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 42, height: 42)
-                                
-                            }
+                            })
                             
-                        })
-                        
-                        Button(action: {}, label: {
                             
-                            ZStack {
-                                
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color("Blue-Gray"))
-                                    .frame(width: 160, height: 90)
-                                
-                                Image("OpenWorld")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 42, height: 42)
-                                
-                            }
+                        }
+                    } else {
+                        HStack {
                             
-                        })
-                        
-                        
+                            Button(action: {}, label: {
+                                
+                                ZStack {
+                                    
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color("Blue-Gray"))
+                                        .frame(width: 160, height: 90)
+                                    
+                                    Image("FPS")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 42, height: 42)
+                                    
+                                }
+                                
+                            })
+                            
+                            Button(action: {}, label: {
+                                
+                                ZStack {
+                                    
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color("Blue-Gray"))
+                                        .frame(width: 160, height: 90)
+                                    
+                                    Image("RPG")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 42, height: 42)
+                                    
+                                }
+                                
+                            })
+                            
+                            Button(action: {}, label: {
+                                
+                                ZStack {
+                                    
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color("Blue-Gray"))
+                                        .frame(width: 160, height: 90)
+                                    
+                                    Image("OpenWorld")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 42, height: 42)
+                                    
+                                }
+                                
+                            })
+                            
+                            
+                        }
                     }
+                    
+                    
                     
                 }
                 
